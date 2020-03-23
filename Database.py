@@ -7,9 +7,9 @@ class Database(object):
 
     def __init__(self):
         self.myDatabase = mysql.connector.connect(
-            host="192.93.195.15",
+            host="localhost",
             user="root",
-            passwd="root",
+            passwd="",
             database="corona_bot"
         )
         self.my_cursor = self.myDatabase.cursor()
