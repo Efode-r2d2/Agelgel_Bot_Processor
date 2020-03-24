@@ -7,7 +7,7 @@ class Database(object):
 
     def __init__(self):
         self.myDatabase = mysql.connector.connect(
-            host="127.0.0.1",
+            host="localhost",
             user="root",
             passwd="root",
             database="corona_bot"
