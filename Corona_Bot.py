@@ -7,7 +7,7 @@ from Database import Database
 '''
 
 '''
-updater = Updater(token="1105786287:AAEse9mWu9fNeKAoSernjVZK98v01pRjiT0", use_context=True)
+updater = Updater(token="1105786287:AAEse9mWu9fNeKAoSernjVZK98v01pRjiT0")
 dispatcher = updater.dispatcher
 
 URL = "https://api.botmanager.negarit.net/api/"
