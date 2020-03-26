@@ -36,7 +36,7 @@ def start(bot, update):
         database.update_parent_id(user_id, parent_id)
     menus = []
     print("here i am")
-    req = get_request('nav_menus_list/2')
+    req = get_request('nav_menus_list/1')
     print(req)
     for i in req['result']:
         menus.append(i['name'])
