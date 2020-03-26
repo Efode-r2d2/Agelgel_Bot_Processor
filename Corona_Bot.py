@@ -25,17 +25,19 @@ class BearerAuth(requests.auth.AuthBase):
 
 def get_request(route):
     req = requests.get(url=URL + route, auth=BearerAuth(
-        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzU5MWViZjM2OWI1ZWZlYTZkYWFlMjRjZjU0MmRkMDIwNTAxODAxNzIxMmRiNTQyZWVjOTYwYzg4MTU0NDBkNjUyN2I2NTVmOGFlZTZiMmUiLCJpYXQiOjE1ODQ5ODMxNTUsIm5iZiI6MTU4NDk4MzE1NSwiZXhwIjoxNjE2NTE5MTU1LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.kIFfhozDNU9B3pZmQm7H5rD7MqUtBo7c8uXQpElJS4aGpxgbr_3Z-ksLUJXEqBNkjy9f5VDQOVCubjEwXuLQkZmejwaT1VHBBV24FJpEVGL-KH7ugkGnA2ReKI50uDpfp3KAgiw-0H6SZX-8eTiT8b0jo7lXFOmqQbJxqxvUPokXVRLBTGWzKCUCujIyAZgYJ_PZrCr48n3alZlvJ-pnuCuCva9H7ApJ7Glk9dRbWya0pLuhHxVL7rWOkQVz5C-LQRXD-x0n_Hn1q8HqrWZ6bp1LH7HAoRhob4aB0Xs8CVyRjtkm7S8LOY9ZAb5UZ7SJz997U3CAOXbZWRwbw3HSowK-3qjEOj2o7oxxM1jrM0zJoWLVWPF2CfnvhjnTuuBOxsXlHNLfDkvBaggJ25M-loMIPSN1XHJeFqalVe-ktWdmxYarWT6MFs70_omUrDQJX_JNM-dvxvsGmcxlCfGTHpGSj8kXdsZAezh8jVub-W2viCi6AZoHBrjCZJo2r11DO5Qkles3Wzx0ZLmfIFhFyhaVstKJF8bMhMUrLxdPAoZ8-_weQYOUJT676WeaLpUz7KkKt_eO8iINSOPVdEmS1TC59lxXTEOjI0LQnvx9pNeiiciCEH4BHiQMpFP6QNiha8zjqmj8B7JO3VJLZOPjmzIai5IOMtbb3y2ylh8EuXo'))
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDQ1OGUxM2QyZTU3YjNkZjdkYzU2Njc1ZGZlYzE3NWIyY2EyM2I1YmRmZjFhN2ZlMDEwYjM0ZWFlNGI1MGFjNGRiZjhjODU4NjZiOWMzYmEiLCJpYXQiOjE1ODUyMzU0NjUsIm5iZiI6MTU4NTIzNTQ2NSwiZXhwIjoxNjE2NzcxNDY1LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.A83eklDs6PgdqmpnI05eB-bsytF39UTd9lqqE__C72CkjKouMt3XyouwbQi2D7ztANvgmZNlSfsOmyfqx6pIqro0IKR5MhcSB5YFwHas80NRjpRa2oPJY_mzKe8ss-0cHUDhCNjaolKMs4_gkAHFmSsjAUhRQ034NN_oDGXG1FttHkSd7kAN4_k-dgmRBEgiv5_DhLAdir9Xl2CHygU09wousDlHylgPaVdc8aWZUPOFmOXRecTvPC4K35Ai-uuxvf5FKx3eXKoS9I37-tqJ48hSeBeTEq3AdP6fLXUfFVosLOgx3jPiH-_rlQE1DdAMyfpGlL8AjpLFhDeNm8w4Y0t7idkXhQotkhA6M6bcRX0zW-PPLXSDPSb2kZahBCjOtY1OVuzWt5f_WueYgrINxzZDRwLzFdxJUwLWKRrof1hocZIG6rAkxulhjLUBv7NZAge_6ns4CWDXdVKT1RwCzBt1FZuufyz_qgpSgxnk_4DI3DICUxZHigOG8SrBhw9rJ4Mw2CTRezppNjIufyRZH3S3Yu60WCWzaItybeo-FkIuxs4gv6WzsNTp5Qa6aOk77EsquePh6eCKVtFCOFuV4Lc4T3Mt7sqMxwf06DTTx9cJashG7ZPTFN1zPsPrtucE_pQri3AF1l6KdbSZt-me27osIUy5jwWPcd67jhBcjtQ'))
     return req.json()
 
 
 def start(bot, update):
     user_id = update.message.chat_id
     if database.check_user(user_id):
-        parent_id = 0;
+        parent_id = 0
         database.update_parent_id(user_id, parent_id)
     menus = []
-    req = get_request('nav_menus_list/1')
+    print("here i am")
+    req = get_request('nav_menus_list/2')
+    print(req)
     for i in req['result']:
         menus.append(i['name'])
         if not database.check_menu(i['id']):
