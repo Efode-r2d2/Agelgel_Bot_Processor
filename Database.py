@@ -22,7 +22,7 @@ class Database(object):
 
     def check_menu(self, menu_id):
 
-        sql = "SELECT * FROM menus WHERE id ='" + str(menu_id) + "'"
+        sql = "SELECT * FROM menus WHERE id =" + menu_id + ""
         self.my_cursor.execute(sql)
         my_result = self.my_cursor.fetchall()
         print("from check")
