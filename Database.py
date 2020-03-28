@@ -21,9 +21,11 @@ class Database(object):
         self.myDatabase.commit()
 
     def check_menu(self, menu_id):
+
         sql = "SELECT * FROM menus WHERE id ='" + str(menu_id) + "'"
         self.my_cursor.execute(sql)
         my_result = self.my_cursor.fetchall()
+        print("from check")
         if len(my_result) > 0:
             return True
         else:
