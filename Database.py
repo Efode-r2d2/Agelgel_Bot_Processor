@@ -14,27 +14,6 @@ class Database(object):
         )
         self.my_cursor = self.myDatabase.cursor()
 
-    def insert_menu(self, menu_id, menu_name, menu_parent):
-        sql = "INSERT INTO menus (id, name, parent) VALUES (%s, %s, %s)"
-        val = (menu_id, menu_name, menu_parent)
-        self.my_cursor.execute(sql, val)
-        self.myDatabase.commit()
-
-    def check_menu(self, menu_id):
-
-        sql = "SELECT * FROM menus WHERE id ='" + str(menu_id) + "'"
-        self.my_cursor.execute(sql)
-        my_result = self.my_cursor.fetchall()
-        print("from check")
-        if len(my_result) > 0:
-            return True
-        else:
-            return False
-
-    def check_menu2(self, menu_id):
-        pass
-        #self.my_cursor.execute("INSERT INTO table VALUES(%s,%s)", (int(id), string))
-
     def add_status(self, user_id, parent_id):
         sql = "INSERT INTO track_user (user_id, parent_id) VALUES (%s, %s)"
         val = (user_id, parent_id)
