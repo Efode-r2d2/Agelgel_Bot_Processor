@@ -39,9 +39,11 @@ def start(bot, update):
     req = get_request('nav_menus_list/1')
     print(req)
     for i in req['result']:
+        print("Menu",i['name'])
         menus.append(i['name'])
         if not database.check_menu(i['id']):
             database.insert_menu(i['id'], i['name'], i['parent'])
+        print("menus grouped", menus)
     keyboard = [menus[x:x + 2] for x in range(0, len(menus), 2)]
 
     reply_markup = ReplyKeyboardMarkup(keyboard,
